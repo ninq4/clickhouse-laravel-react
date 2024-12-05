@@ -19,6 +19,16 @@ export default {
                 center: true,
                 padding: "15px",
             },
+            boxShadow: {
+                inset: "inset 0 0 10px 0 rgba(0, 0, 0, 0.05)",
+            },
+        },
+        screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
         },
     },
 

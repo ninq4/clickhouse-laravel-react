@@ -1,50 +1,62 @@
-import Logo from "@/app/assets/icons/logo.svg";
+import Logo from "@/app/assets/icons/logo.svg?react";
+import Menu from "@/app/assets/icons/menu.svg?react";
+import Favorite from "@/app/assets/icons/favorite.svg?react";
+import Cart from "@/app/assets/icons/cart.svg?react";
+import Profile from "@/app/assets/icons/profile.svg?react";
 import { PageContainer } from "@/shared/ui/PageContainer/PageContainer";
+import { BaseModal } from "@/shared/BaseModal/BaseModal";
+import { useState } from "react";
+import Close from "@/app/assets/icons/cross.svg?react";
 export const Navbar = () => {
-    const navData = [
-        {
-            title: "Каталог",
-            path: "#",
-        },
-        {
-            title: "Доставка",
-            path: "#",
-        },
-        {
-            title: "Условия",
-            path: "#",
-        },
-        {
-            title: "Контакты",
-            path: "#",
-        },
-    ];
+    const [open, setOpen] = useState(false);
+    console.log(open);
+    const openHandler = () => {
+        setOpen(!open);
+    };
     return (
-        <div className="bg-[#F8F8F8]  h-[100px] flex items-center">
-            <PageContainer className="flex items-center justify-between">
-                <div className="font-bold text-[24px]">Logo</div>
+        <>
+            <div className="bg-[#F8F8F8]  h-[100px] flex items-center">
+                <PageContainer className="flex items-center justify-between">
+                    <button
+                        onClick={openHandler}
+                        className="block sm:hidden p-1"
+                    >
+                        <Menu />
+                    </button>
+                    <Logo />
 
-                <nav>
-                    <ul className="flex gap-4">
-                        {navData.map((item) => (
-                            <li key={item.title}>
-                                <a
-                                    className="text-[18px] text-black hover:text-[#FF9900] transition-colors duration-300"
-                                    href={item.path}
-                                >
-                                    {item.title}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-                <a
-                    href="tel:8 (812) 123-45-67"
-                    className="text-[18px] text-black hover:text-[#FF9900] transition-colors duration-300"
-                >
-                    8 (812) 123-45-67
-                </a>
+                    <a
+                        href="tel:8 (812) 123-45-67"
+                        className="text-[18px] text-black hover:text-[#FF9900] transition-colors duration-300"
+                    >
+                        8 (812) 123-45-67
+                    </a>
+                </PageContainer>
+            </div>
+            <PageContainer className="hidden sm:flex h-[100px] items-center justify-between">
+                <button onClick={openHandler} className="hidden  sm:block">
+                    <Menu />
+                </button>
+                <div className="flex gap-[40px] items-center">
+                    <button>
+                        <Favorite />
+                    </button>
+                    <button>
+                        <Cart />
+                    </button>
+                    <button>
+                        <Profile />
+                    </button>
+                </div>
             </PageContainer>
-        </div>
+            <BaseModal open={open} onClose={() => setOpen(false)}>
+                <div className="flex items-center justify-between w-full">
+                    <Logo />
+                    <button onClick={openHandler}>
+                        <Close />
+                    </button>
+                </div>
+            </BaseModal>
+        </>
     );
 };
