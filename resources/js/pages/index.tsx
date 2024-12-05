@@ -3,6 +3,7 @@ import { Navbar } from "@/widgets/Navbar/Navbar";
 import { Button } from "@/shared/ui/Button/Button";
 import { formatImage } from "@/shared/lib/utils/formatImage/formatImage";
 import { BottomNavbar } from "@/widgets/BottomNavbar/BottomNavbar";
+import { Footer } from "@/widgets/Footer/Footer";
 export default function Home() {
     return (
         <>
@@ -27,6 +28,7 @@ export default function Home() {
                     />
                 </div>
             </PageContainer>
+            <Footer />
             <BottomNavbar />
         </>
     );
