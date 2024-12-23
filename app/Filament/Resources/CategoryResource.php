@@ -34,7 +34,7 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $modelLabel = 'Категория';
-    
+
     protected static ?string $pluralModelLabel = 'Категории';
 
     public static function form(Form $form): Form
@@ -46,7 +46,7 @@ class CategoryResource extends Resource
                         TextInput::make('name')
                             ->label('Название категории')
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn (string $operation, $state, Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null)
+                            ->afterStateUpdated(fn(string $operation, $state, Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null)
                             ->required(),
                         TextInput::make('slug')
                             ->maxLength(255)
@@ -59,10 +59,14 @@ class CategoryResource extends Resource
                             ->image()
                             ->label('Изображение')
                             ->directory('categories')
+                            ->enableOpen()
                             ->columnSpan(2),
                         Toggle::make('is_active')
                             ->label('Отображать на сайте')
                             ->default(true),
+                        Toggle::make('is_popular')
+                            ->label('Отображать на главной')
+                            ->default(false),
                     ])
                 ])
             ]);
@@ -79,7 +83,7 @@ class CategoryResource extends Resource
                 TextColumn::make('created_at')
                     ->sortable()
                     ->date()
-                    ->toggleable(isToggledHiddenByDefault:true),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

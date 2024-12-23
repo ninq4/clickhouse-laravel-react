@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->default('default.webp');
             $table->boolean('is_active')->default(true);
+            $table->boolean('6')->default(false);
             $table->timestamps();
         });
     }

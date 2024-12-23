@@ -4,7 +4,20 @@ import { Button } from "@/shared/ui/Button/Button";
 import { formatImage } from "@/shared/lib/utils/formatImage/formatImage";
 import { BottomNavbar } from "@/widgets/BottomNavbar/BottomNavbar";
 import { Footer } from "@/widgets/Footer/Footer";
-export default function Home() {
+import { TProduct } from "@/entities/Product/types";
+import { TCategory } from "@/entities/Category/types";
+import { ShowCaseHead } from "@/shared/ui/ShowCaseHead/ShowCaseHead";
+import { CategoryCard } from "@/shared/ui/CategoryCard/CategoryCard";
+import { ProductCard } from "@/widgets/ProductCard/ProductCard";
+import { AddCard } from "@/features/Cart/AddCard/ui/AddCard";
+type TData = {
+    products: TProduct[];
+    discountProducts: TProduct[];
+    popularProducts: TProduct[];
+    popularCategory: TCategory[];
+};
+export default function Home(data: TData) {
+    console.log(data);
     return (
         <>
             <Navbar />
@@ -26,6 +39,50 @@ export default function Home() {
                         src={formatImage("banner.png")}
                         alt={""}
                     />
+                </div>
+                <div className="flex flex-col gap-[60px]">
+                    <ShowCaseHead
+                        title="Популярные категории"
+                        linkTitle="Смотреть все"
+                        href="/discount"
+                    >
+                        {data.popularCategory?.map((category) => (
+                            <CategoryCard key={category.id} {...category} />
+                        ))}
+                    </ShowCaseHead>
+                    <ShowCaseHead
+                        title="Скидки"
+                        linkTitle="Смотреть все"
+                        href="/"
+                    >
+                        {data.discountProducts?.map((product) => (
+                            <ProductCard key={product.id} {...product}>
+                                <AddCard {...product} />
+                            </ProductCard>
+                        ))}
+                    </ShowCaseHead>
+                    <ShowCaseHead
+                        title="Товары в наличии"
+                        linkTitle="Смотреть все"
+                        href="/"
+                    >
+                        {data.products?.map((product) => (
+                            <ProductCard key={product.id} {...product}>
+                                <AddCard {...product} />
+                            </ProductCard>
+                        ))}
+                    </ShowCaseHead>
+                    <ShowCaseHead
+                        title="Популярные товары"
+                        linkTitle="Смотреть все"
+                        href="/"
+                    >
+                        {data.popularProducts?.map((product) => (
+                            <ProductCard key={product.id} {...product}>
+                                <AddCard {...product} />
+                            </ProductCard>
+                        ))}
+                    </ShowCaseHead>
                 </div>
             </PageContainer>
             <Footer />

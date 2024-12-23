@@ -1,5 +1,3 @@
-export type Props = {
-    href: string
-    src: string
-    title: string
-}
+import { TCategory } from "@/entities/Category/types";
+
+export type Props = TCategory

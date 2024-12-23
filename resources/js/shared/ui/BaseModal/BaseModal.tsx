@@ -19,9 +19,9 @@ export const BaseModal = (props: TProps) => {
                     {/* Модалка */}
                     <motion.div
                         className="h-full py-10 px-5 sm:px-[120px] w-full sm:w-[550px] flex flex-col items-center justify-between bg-white"
-                        initial={{ y: "-100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "100%" }}
+                        initial={{ x: "-100%" }}
+                        animate={{ x: 0 }}
+                        exit={{ x: "-100%" }}
                         transition={{ duration: 0.5 }}
                     >
                         {props.children}

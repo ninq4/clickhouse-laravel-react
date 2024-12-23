@@ -4,12 +4,11 @@ import Favorite from "@/app/assets/icons/favorite.svg?react";
 import Cart from "@/app/assets/icons/cart.svg?react";
 import Profile from "@/app/assets/icons/profile.svg?react";
 import { PageContainer } from "@/shared/ui/PageContainer/PageContainer";
-import { BaseModal } from "@/shared/BaseModal/BaseModal";
 import { useState } from "react";
 import Close from "@/app/assets/icons/cross.svg?react";
+import { BaseModal } from "@/shared/ui/BaseModal/BaseModal";
 export const Navbar = () => {
     const [open, setOpen] = useState(false);
-    console.log(open);
     const openHandler = () => {
         setOpen(!open);
     };

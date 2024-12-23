@@ -2,7 +2,8 @@ import { CategoryCard } from "@/shared/ui/CategoryCard/CategoryCard";
 import { Link } from "@inertiajs/react";
 import { Props } from "./types";
 
-export const CheckCaseHead = (props: Props) => {
+
+export const ShowCaseHead = (props: Props) => {
     return (
         <div className="flex flex-col gap-2">
             <div className="flex items-center sm:justify-between gap-2">
