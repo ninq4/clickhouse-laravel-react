@@ -18,9 +18,7 @@ type TData = {
     popularCategory: TCategory[];
 };
 export default function Home(data: TData) {
-    console.log(data);
     const route = useRoute();
-    console.log(route());
     return (
         <>
             <Navbar />

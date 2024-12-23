@@ -12,5 +12,8 @@ Route::get('/catalog', [Product::class, 'catalog']);
 Route::get('/catalog/{slug}', [Product::class, 'getProductsByCategory']);
 
 Route::get('/product/{slug}', [Product::class, 'getProductBySlug']);
+Route::get('cart', function () {
+    return Inertia::render('cart/index');
+});
 
 require __DIR__ . '/auth.php';

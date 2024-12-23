@@ -8,11 +8,14 @@ import { useState } from "react";
 import Close from "@/app/assets/icons/cross.svg?react";
 import { BaseModal } from "@/shared/ui/BaseModal/BaseModal";
 import { Link } from "@inertiajs/react";
-export const Navbar = () => {
+import { observer } from "mobx-react-lite";
+import { CartModel } from "@/entities/Cart";
+export const Navbar = observer(() => {
     const [open, setOpen] = useState(false);
     const openHandler = () => {
         setOpen(!open);
     };
+    const store = CartModel.CartStore;
     return (
         <>
             <div className="bg-[#F8F8F8]  h-[100px] flex items-center">
@@ -24,7 +27,7 @@ export const Navbar = () => {
                         <Menu />
                     </button>
                     <Link href="/">
-                    <Logo />
+                        <Logo />
                     </Link>
 
                     <a
@@ -43,9 +46,14 @@ export const Navbar = () => {
                     <button>
                         <Favorite />
                     </button>
-                    <button>
+                    <Link href="/cart" className="relative">
                         <Cart />
-                    </button>
+                        {store.getAll.length > 0 && (
+                            <span className="absolute top-[-10px] right-[-10px] bg-[#FF9900] w-[20px] h-[20px] rounded-full flex items-center justify-center text-white text-[12px]">
+                                {store.getAll.length}
+                            </span>
+                        )}
+                    </Link>
                     <button>
                         <Profile />
                     </button>
@@ -61,4 +69,4 @@ export const Navbar = () => {
             </BaseModal>
         </>
     );
-};
+});
