@@ -26,15 +26,18 @@ export default function Home(data: TData) {
                     <div className="flex flex-col-reverse md:items-center md:flex-row items-start gap-4">
                         <div className="shadow-inset flex-[1] px-8 py-4 rounded-[30px] flex flex-col gap-[30px]">
                             <h2 className="text-[30px] font-bold">
-                                Товар на любой вкус!
+                                Товары для домашнего ремонта!
                             </h2>
                             <div className="flex flex-col items-start gap-2">
-                                <p>Худи, чашки для горячего чая и термосы</p>
-                                <p>Eлочные игрушки, брелочки</p>
-                                <p>Начало списка вещей, которые можно</p>
+                                <p>Инструменты, краски и обои</p>
+                                <p>Декор для дома и садоводства</p>
+                                <p>
+                                    Начало списка вещей, которые помогут вам
+                                    сделать дом уютным и стильным
+                                </p>
                             </div>
-                            <Button href="catalog">Перейти в каталог</Button>
                         </div>
+
                         <img
                             className="flex-[2] h-[400px] rounded-[30px] object-cover"
                             src={formatImage("banner.png")}

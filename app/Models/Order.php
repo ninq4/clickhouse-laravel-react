@@ -10,7 +10,6 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'session_id',
         'name',
         'email',
         'phone',
@@ -21,21 +20,11 @@ class Order extends Model
         'currency',
         'shipping_amount',
         'shipping_method',
-        'notes'
+        'notes',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function items()
     {
         return $this->hasMany(OrderItem::class);
-    }
-
-    public function address()
-    {
-        return $this->hasMany(Address::class);
     }
 }
