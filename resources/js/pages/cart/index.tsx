@@ -1,5 +1,6 @@
 import { CartModel } from "@/entities/Cart";
 import { TCategory } from "@/entities/Category/types";
+import { MakeOrder } from "@/features/MakeOrder/ui/MakeOrder";
 import { CategoryCard } from "@/shared/ui/CategoryCard/CategoryCard";
 import { PageContainer } from "@/shared/ui/PageContainer/PageContainer";
 import { Footer } from "@/widgets/Footer/Footer";
@@ -19,13 +20,16 @@ const CartPage = observer(() => {
                     </h2>
                     <div className="flex items-start">
                         {store.getAll.length > 0 ? (
-                            <div className="flex flex-col items-start flex-1">
-                                {store.getAll.map((product) => (
-                                    <ProductInCart
-                                        key={product.id}
-                                        {...product}
-                                    />
-                                ))}
+                            <div className="w-full flex-col flex-1 flex">
+                                <div className="flex flex-col items-start flex-1">
+                                    {store.getAll.map((product) => (
+                                        <ProductInCart
+                                            key={product.id}
+                                            {...product}
+                                        />
+                                    ))}
+                                </div>
+                                <MakeOrder />
                             </div>
                         ) : (
                             <div className="flex-1 flex items-center justify-center">

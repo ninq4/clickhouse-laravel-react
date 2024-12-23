@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('session_id')->constrained('sessions')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
             $table->decimal('grand_total', 10, 2)->nullable();
             $table->string('pay_method')->nullable();
             $table->string('pay_status')->nullable();

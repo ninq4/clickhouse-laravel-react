@@ -43,9 +43,9 @@ export const Navbar = observer(() => {
                     <Menu />
                 </button>
                 <div className="flex gap-[40px] items-center">
-                    <button>
+                    {/* <button>
                         <Favorite />
-                    </button>
+                    </button> */}
                     <Link href="/cart" className="relative">
                         <Cart />
                         {store.getAll.length > 0 && (
@@ -54,9 +54,9 @@ export const Navbar = observer(() => {
                             </span>
                         )}
                     </Link>
-                    <button>
+                    {/* <button>
                         <Profile />
-                    </button>
+                    </button> */}
                 </div>
             </PageContainer>
             <BaseModal open={open} onClose={() => setOpen(false)}>
