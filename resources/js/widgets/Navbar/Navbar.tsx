@@ -7,6 +7,7 @@ import { PageContainer } from "@/shared/ui/PageContainer/PageContainer";
 import { useState } from "react";
 import Close from "@/app/assets/icons/cross.svg?react";
 import { BaseModal } from "@/shared/ui/BaseModal/BaseModal";
+import { Link } from "@inertiajs/react";
 export const Navbar = () => {
     const [open, setOpen] = useState(false);
     const openHandler = () => {
@@ -22,7 +23,9 @@ export const Navbar = () => {
                     >
                         <Menu />
                     </button>
+                    <Link href="/">
                     <Logo />
+                    </Link>
 
                     <a
                         href="tel:8 (812) 123-45-67"

@@ -44,7 +44,7 @@ export default function Home(data: TData) {
                     <ShowCaseHead
                         title="Популярные категории"
                         linkTitle="Смотреть все"
-                        href="/discount"
+                        href="/catalog"
                     >
                         {data.popularCategory?.map((category) => (
                             <CategoryCard key={category.id} {...category} />
@@ -64,7 +64,7 @@ export default function Home(data: TData) {
                     <ShowCaseHead
                         title="Товары в наличии"
                         linkTitle="Смотреть все"
-                        href="/"
+                        href="/catalog"
                     >
                         {data.products?.map((product) => (
                             <ProductCard key={product.id} {...product}>
@@ -86,7 +86,6 @@ export default function Home(data: TData) {
                 </div>
             </PageContainer>
             <Footer />
-            <BottomNavbar />
         </>
     );
 }

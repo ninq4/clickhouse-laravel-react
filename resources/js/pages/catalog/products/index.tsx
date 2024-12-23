@@ -1,12 +1,15 @@
 import { TCategory } from "@/entities/Category/types";
-import { CategoryCard } from "@/shared/ui/CategoryCard/CategoryCard";
+import { TProduct } from "@/entities/Product/types";
+import { AddCard } from "@/features/Cart/AddCard/ui/AddCard";
 import { PageContainer } from "@/shared/ui/PageContainer/PageContainer";
 import { Footer } from "@/widgets/Footer/Footer";
 import { Navbar } from "@/widgets/Navbar/Navbar";
+import { ProductCard } from "@/widgets/ProductCard/ProductCard";
 type TData = {
-    categories: TCategory[];
+    category: TCategory;
+    products: TProduct[];
 };
-const CatalogPage = (data: TData) => {
+const ProductsPage = (data: TData) => {
     console.log(data);
     return (
         <>
@@ -14,15 +17,13 @@ const CatalogPage = (data: TData) => {
             <PageContainer>
                 <>
                     <h2 className="font-bold text-[36px] text-black mb-[42px]">
-                        Каталог
+                        {data.category.name}
                     </h2>
                     <div className="flex items-center flex-wrap gap-4">
-                        {data.categories.map((category) => (
-                            <CategoryCard
-                                key={category.id}
-                                slug={category.slug}
-                                {...category}
-                            />
+                        {data.products.map((product) => (
+                            <ProductCard key={product.id} {...product}>
+                                <AddCard {...product} />
+                            </ProductCard>
                         ))}
                     </div>
                 </>
@@ -32,4 +33,4 @@ const CatalogPage = (data: TData) => {
     );
 };
 
-export default CatalogPage;
+export default ProductsPage;

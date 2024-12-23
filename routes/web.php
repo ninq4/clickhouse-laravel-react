@@ -7,5 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [Product::class, 'index']);
+Route::get('/catalog', [Product::class, 'catalog']);
+
+Route::get('/catalog/{slug}', [Product::class, 'getProductsByCategory']);
 
 require __DIR__ . '/auth.php';
