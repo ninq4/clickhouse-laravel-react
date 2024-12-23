@@ -12,11 +12,11 @@ class Product extends Controller
     {
         $allProducts = ModelsProduct::take(10)->get();
 
-        $discountProducts = ModelsProduct::where('is_sale', true)->take(10)->get();
+        $discountProducts = ModelsProduct::where('is_sale', true)->where('is_active', true)->take(4)->get();
 
-        $popularProducts = ModelsProduct::where('is_featured', true)->take(10)->get();
+        $popularProducts = ModelsProduct::where('is_featured', true)->where('is_active', true)->take(4)->get();
 
-        $popularCategory = Category::where('is_popular', true)->take(10)->get();
+        $popularCategory = Category::where('is_popular', true)->where('is_active', true)->take(10)->get();
 
         return Inertia::render('index', [
             'products' => $allProducts,
@@ -28,7 +28,7 @@ class Product extends Controller
 
     public function catalog()
     {
-        $allCategories = Category::all();
+        $allCategories = Category::all()->where('is_active', true);
 
         return Inertia::render('catalog/index', [
             'categories' => $allCategories
@@ -36,13 +36,21 @@ class Product extends Controller
     }
     public function getProductsByCategory($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
+        $category = Category::where('slug', $slug)->where('is_active', true)->firstOrFail();
 
-        $products = $category->products()->get();
+        $products = $category->products()->where('is_active', true)->get();
 
         return Inertia::render('catalog/products/index', [
             'products' => $products,
             'category' => $category
+        ]);
+    }
+    public function getProductBySlug($slug)
+    {
+        $product = ModelsProduct::where('slug', $slug)->where('is_active', true)->firstOrFail();
+
+        return Inertia::render('product/index', [
+            'product' => $product
         ]);
     }
 }

@@ -9,14 +9,13 @@ use Illuminate\Support\Number;
 
 class OrdersStatic extends BaseWidget
 {
-    
     protected function getStats(): array
     {
         return [
             Stat::make("Новые заказы", Order::query()->where('status', 'new')->count()),
             Stat::make("В обработке", Order::query()->where('status', 'processing')->count()),
             Stat::make("Ожидают оплаты", Order::query()->where('pay_status', 'pending')->count()),
-            Stat::make("Общая сумма заказов", Number::currency(Order::query()->avg('grand_total')), 'RUB')
+            Stat::make("Общая сумма заказов", Number::currency(floatval(Order::query()->avg('grand_total')) ?? 0), 'RUB')
         ];
     }
 }

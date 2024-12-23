@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { CartModel } from "@/entities/Cart";
 import { TProps } from "./types";
 import { useAddProductToCartModel } from "../model";
+import clsx from "clsx";
 
 export const AddCard = observer((props: TProps) => {
     const store = CartModel.CartStore;
@@ -23,9 +24,12 @@ export const AddCard = observer((props: TProps) => {
         e.preventDefault();
         cartModel.addProduct();
     };
-
+    const rootClassNames = clsx(
+        "flex justify-between items-end gap-2",
+        props.reverse && "flex-row-reverse"
+    );
     return (
-        <div className="flex justify-between items-end">
+        <div className={rootClassNames}>
             {findProductInCart ? (
                 <button
                     onClick={onRemove}

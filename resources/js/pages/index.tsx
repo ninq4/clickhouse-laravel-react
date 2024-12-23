@@ -10,6 +10,7 @@ import { ShowCaseHead } from "@/shared/ui/ShowCaseHead/ShowCaseHead";
 import { CategoryCard } from "@/shared/ui/CategoryCard/CategoryCard";
 import { ProductCard } from "@/widgets/ProductCard/ProductCard";
 import { AddCard } from "@/features/Cart/AddCard/ui/AddCard";
+import { useRoute } from "../../../vendor/tightenco/ziggy/src/js";
 type TData = {
     products: TProduct[];
     discountProducts: TProduct[];
@@ -18,11 +19,13 @@ type TData = {
 };
 export default function Home(data: TData) {
     console.log(data);
+    const route = useRoute();
+    console.log(route());
     return (
         <>
             <Navbar />
             <PageContainer>
-                <div className="flex h-[400px] flex-wrap items-start">
+                <div className="flex h-[400px] flex-wrap items-start mb-[60px]">
                     <div className="shadow-inset flex-[1] px-8 py-4 rounded-[30px] flex flex-col gap-[30px] ">
                         <h2 className="text-[30px] font-bold">
                             Товар на любой вкус!
@@ -32,7 +35,9 @@ export default function Home(data: TData) {
                             <p>Eлочные игрушки, брелочки</p>
                             <p>Начало списка вещей, которые можно</p>
                         </div>
-                        <Button>Перейти в каталог</Button>
+                        <Button onClick={() => route("/catalog")}>
+                            Перейти в каталог
+                        </Button>
                     </div>
                     <img
                         className="flex-[2] h-[400px] rounded-[30px]"

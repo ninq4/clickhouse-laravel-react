@@ -15,7 +15,7 @@ export const ProductCard = (props: TProps) => {
     return (
         <Link
             className="shadow-inset rounded-[30px] w-[300px]"
-            href={props.slug}
+            href={`/product/${props.slug}`}
         >
             <img
                 className="rounded-[30px] object-cover h-[290px]"

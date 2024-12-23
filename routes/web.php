@@ -11,4 +11,6 @@ Route::get('/catalog', [Product::class, 'catalog']);
 
 Route::get('/catalog/{slug}', [Product::class, 'getProductsByCategory']);
 
+Route::get('/product/{slug}', [Product::class, 'getProductBySlug']);
+
 require __DIR__ . '/auth.php';
