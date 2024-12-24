@@ -66,6 +66,17 @@ export const Navbar = observer(() => {
                         <Close />
                     </button>
                 </div>
+                <div className="flex flex-col gap-4">
+                    <Link className="font-bold" href="/">
+                        Главная
+                    </Link>
+                    <Link className="font-bold" href="/catalog">
+                        Каталог
+                    </Link>
+                    <Link className="font-bold" href="/cart">
+                        Корзина
+                    </Link>
+                </div>
             </BaseModal>
         </>
     );
